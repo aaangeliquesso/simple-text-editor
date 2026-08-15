@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Text Editor</title>
+    <link rel="icon" type="image/png" href="img/logo_icon.png">
+    <link rel="stylesheet" href="SoE4-3.css">
+</head>
+<body>
+
+    <div id = "editor-card" class ="editor-card">
+        <div class="top-container">
+            <img src="img/logo_icon.png" alt="Logo">
+            <span class="text-editor">Simple Text Editor</span>
+        </div>
+
+
+
+        <!-- TOOLBAR -->
+        <div id="toolbar" class="toolbar">      
+            <!-- EDITING & SEARCHING -->
+            <div class="group">
+                <div class="group-buttons">
+                     <!-- Toggle Uppercase/Lowercase -->
+                    <button id="changeCaseBtn" class="button-space" title="Change case"  onclick="upperLowercase()">
+                        <img src="img/changeCase.png" alt="Change Case">
+                    </button>
+                    
+                    <!-- Toggle Find/Replace (HIDDEN) Panel -->
+                    <button id="replaceBtn" class="button-space" title="Replace" onclick="toggleFindReplace()">
+                        <img src="img/replace.png" alt="Replace">
+                    </button>
+
+                    <!-- Toggle Find (HIDDEN) Panel -->
+                    <button id="searchBtn" title="Find (Ctrl + F)" onclick="toggleSearch()">
+                        <img src="img/search.png" alt="Search"> Find 
+                    </button>
+                    
+                    <!-- Toggle Word Count (HIDDEN) Panel -->
+                    <button id="wordCountBtn" class="button-space" title="Word Count" onclick="toggleWordCount()">
+                        <img src="img/wordCount.png" alt="Word Count">
+                    </button>
+                </div>
+            </div>
+
+            <!-- CHANGE THEME -->
+            <div class="group">
+                <div class="group-buttons">
+                    <button id="spring" onclick="changeTheme('spring')" class="button-space" title="Spring Theme">
+                        <img id="springImg" src="img/spring.png" alt="Spring">
+                    </button>
+                    <button id="summer" onclick="changeTheme('summer')" class="button-space" title="Summer Theme">
+                        <img id="summerImg" src="img/summer.png" alt="Summer">
+                    </button>
+                    <button id="fall" onclick="changeTheme('fall')" class="button-space" title="Fall Theme">
+                        <img id="fallImg" src="img/fall.png" alt="Fall">
+                    </button>
+                    <button id="winter" onclick="changeTheme('winter')" class="button-space" title="Winter Theme">
+                        <img id="winterImg" src="img/winter.png" alt="Winter">
+                    </button>
+                    <button id="default" onclick="changeTheme('default')" class="button-space" title="default Theme">
+                        <img id="defaultBg" src="img/cleanAll.png" alt="Default">
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- TEXTAREA -->
+        <div>       
+            <textarea id="textbox" oninput="wordCount()" class="textbox" placeholder="Start typing here..."></textarea>
+        </div> 
+
+
+
+        <!-- BOTTOM FIND & REPLACE PANEL (Hidden by default) -->
+        <div id="findReplacePanel" class="bottom-panel">
+            <div class="panel-header">
+                <span>Find & Replace</span>
+                <span class="close-panel-btn" onclick="closeFindReplace()">&times;</span>
+            </div>
+            <div class="panel-body">
+                <div class="input-group">
+                    <input type="text" id="findInputForReplace" placeholder="Find what...">
+                    <input type="text" id="replaceInput" placeholder="Replace with...">
+                </div>
+                <div class="panel-actions">
+                    <button onclick="replaceText(); wordCount();" class="btn-primary">Replace All</button>
+                    <button onclick="closeFindReplace()" class="btn-secondary">Close</button>
+                </div>
+            </div>
+
+            <div class = "output">
+                <span id = "searchOutputFindReplace"></span>
+            </div>
+        </div>
+
+        <!-- BOTTOM FIND PANEL (Hidden by default) -->
+        <div id="searchPanel" class="bottom-panel">
+            <div class="panel-header">
+                <span>Find</span>
+                <span class="close-panel-btn" onclick="closeSearch()">&times;</span>
+            </div>
+            <div class="panel-body">
+                <div class="input-group">
+                    <input type="text" id="findInput" placeholder="Find what...">
+                </div>
+                <div class="panel-actions">
+                    <button type="button" onclick="findText()" class="btn-primary">Find</button>
+                    <button onclick="closeSearch()" class="btn-secondary">Close</button>
+                </div>
+            </div>
+            <div class="output">
+                <span id="searchOutputFind"></span>
+            </div>
+        </div>
+
+        <!-- BOTTOM WORD COUNT PANEL (Hidden by default) -->
+        <div id="wordCountPanel" class="bottom-panel">
+            <div class="panel-header">
+                <span></span>
+                <span class="close-panel-btn" onclick="closeWordCount()">&times;</span>
+            </div>
+            <div class="output">
+                <span id="wordCountOutput"></span>
+            </div>
+        </div>
+    </div>
+
+    <script src="SoE4-3.js"></script>
+</body>
+</html>
