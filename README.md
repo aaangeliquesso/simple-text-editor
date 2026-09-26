@@ -6,4 +6,4 @@ Features
 - Search Word: Finds the word and shows its position number (case-insensitive).
 - Change Case: Changes all text to uppercase or lowercase.
 - Character Count: Counts letters and numbers but ignores spaces using RegEx.
-- Themes: Changes the background colors.
+- Themes: Changes the background picture.
